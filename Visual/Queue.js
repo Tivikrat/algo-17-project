@@ -393,7 +393,7 @@ function DoActions(actionsString) {
         else if (parts[0] == "pop") {
             Pop();
         }
-        else if(parts[0] == "time" && parts[1] >= 50)
+        else if(parts[0] == "time" && Number(parts[1]) >= 50)
         {
             Timer.animationTime = Number(parts[1]);
         }
@@ -425,7 +425,7 @@ function RecopyExtendedPop(time) {
     RemoveElement(time, "Right");
     RemoveElement(time, "RightCopyReserve");
     RemoveElement(time, "RightCopy");
-    let text = "Режим перекопіювання.</br>Якщо посередній стек не містить елементів черги, то елементи беруться з трьох стеків, що їх містять:</br>1) правого;</br>2) копії правого;3) резервного правого.";
+    let text = "Режим перекопіювання.</br>Якщо посередній стек не містить елементів черги, то елементи беруться з трьох стеків, що їх містять:</br>1) правого;</br>2) копії правого;</br>3) резервного правого.";
     TimeoutId = setTimeout(SetNotify, time, text);
 }
 
