@@ -1,21 +1,10 @@
+#include <fstream>
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <string>
 #include <time.h>
 #include <random>
-
-std::string Input()
-{
-    std::string str;
-    std::cin >> str;
-    return str;
-}
-
-void Output(const std::string str, bool newLine = false)
-{
-    std::cout << str << (newLine ? '\n' : ' ');
-}
 
 template<class T>
 struct Stack
@@ -190,27 +179,33 @@ struct Queue
 
 int main() {
     std::ios_base::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+
+    std::ifstream _in;
+    std::ofstream _out;
+
+    _in = std::ifstream("input.txt");
+    _out = std::ofstream("output.txt");
 
     Queue<std::string> queue = Queue<std::string>();
 
-        Output("Use to push 42:\npush 42\n\nUse to pop element if the queue is not empty:\npop\n\nUse to exit:\nexit\n", true);
-
     std::string str;
-    std::cin >> str;
 
-    while (str != "exit")
+    while (_in >> str)
     {
-        if (str == "push")
+        if (str == "push" || str == "+")
         {
-            queue.Push(Input());
+            std::string object;
+            _in >> object;
+            queue.Push(object);
         }
-        else if(str == "pop")
+        else if (str == "pop" || str == "-")
         {
-            Output((queue.size ? queue.Pop() : "Queue is empty. Nothing to pop!"), true);
+            _out << (queue.size ? queue.Pop() : "Queue is empty. Nothing to pop.") << "\n";
         }
-        std::cin >> str;
     }
+
+    _in.close();
+    _out.close();
 
     return 0;
 }
