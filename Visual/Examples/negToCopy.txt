@@ -1,4 +1,4 @@
-time 100
+time 20
 push 1
 push 2
 push 3
@@ -18,7 +18,7 @@ time 1000
 pop
 pop
 pop
-time 5000
+time 2500
 pop
 pop
 pop

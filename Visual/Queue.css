@@ -69,20 +69,6 @@ body{
     height: 75px;
     transform: rotate(180deg);
 }
-@keyframes pop{
-    from {}
-    to {width: 0px; height: 0px; line-height: 0px; font-size: 0px;}
-}
-@keyframes push{
-    from {width: 0px; height: 0px; line-height: 0px; font-size: 0px;}
-    to {}
-}
-.addElement{
-    animation: push 1s;
-}
-.deleteElement{
-    animation: pop 1s;
-}
 .menuElement{
     border: 3px solid #ff7f00;
     background-color: #ffbf3f;
@@ -109,13 +95,15 @@ body{
 }
 .menuItem{
     display: flex;
+    display: -webkit-inline-box;
     width: 100%;
     align-items: center;
     vertical-align: middle;
+    height: 60px;
 }
 .menuItem input{
-    width: 100px;
-    height: 30px;
+    width: 100%;
+    height: 50px;
     background-color: #ffffff3f;
     text-align: center;
     border: 0px;
@@ -162,4 +150,8 @@ h3{
 }
 .stageUndone {
     color: #cf4f4f;
+}
+.menuItem .wrongInput {
+    background-color: #ff0000ff;
+    color: #ffffff;
 }

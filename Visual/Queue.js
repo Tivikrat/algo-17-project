@@ -1,13 +1,13 @@
 window.onload = function() {
     ChangeAnimating();
     ChangePushIncrement();
+    VerifyPushing();
 }
 var colors = [["#007fff", "#3fbfff", "#006f6f"],
                 ["#ff7f00", "#ffbf3f", "#6f6f00"],
                 ["#7fff00", "#9fdf3f", "#006f00"],
                 ["#ff007f", "#ff7f7f", "6f0000]"]];
 
-var isAnimating = true;
 var pushIncrementing;
 var TimeoutId;
 
@@ -16,8 +16,6 @@ var Timer = {
     datetime : Date.now(),
     set animationTime(value) {
         this.animation = value;
-        document.styleSheets[0].cssRules[13].style.animation = value + "ms ease 0s 1 normal none running push";
-        document.styleSheets[0].cssRules[14].style.animation = value + "ms ease 0s 1 normal none running pop";
     },
     get time() {
         let result = this.datetime - Date.now() + this.animation;
@@ -239,30 +237,46 @@ elementIds = 1;
 
 var datetime = Date.now();
 
+function VerifyPushing() {
+    if (-999999999 <= Number(pushInput.value) && Number(pushInput.value) <= 9999999999) {
+        pushInput.classList.remove("wrongInput");
+    }
+    else {
+        pushInput.classList.add("wrongInput");
+    }
+}
+
 function Push(value)
 {
     if (value != undefined) {
         queueIndex = queues.push(queues[queueIndex].Push(value)) - 1;
     }
-    else {
-        queueIndex = queues.push(queues[queueIndex].Push(pushInput.value)) - 1;
+    else if (-999999999 <= Number(pushInput.value) && Number(pushInput.value) <= 9999999999) {
+        queueIndex = queues.push(queues[queueIndex].Push(Number(pushInput.value))) - 1;
         if (pushIncrementing) {
             pushInput.value++;
         }
         pushInput.focus();
     }
-    //VisualQueue(queueIndex);
 }
 
 function Pop()
 {
     popOutput.value = queues[queueIndex].Get();
     queueIndex = queues.push(queues[queueIndex].Pop()) - 1;
-    //VisualQueue(queueIndex);
 }
 
 function VisualQueue(index)
 {
+    for (let index = 0; index <= TimeoutId; index++) {
+        clearTimeout(index);
+    }
+
+    if (Timer.datetime - Date.now() > Timer.animation) {
+        PrintVersion(queueIndex, "Миттєве закінчення анімації", 0);
+    }
+    Timer.datetime = Date.now();
+
     queueIndex = index;
     CleanChilds(LeftReserve);
     CleanChilds(Left);
@@ -309,26 +323,34 @@ function CleanChilds(DOMElement)
     }
 }
 
-function AddElement(DOMElement, value, color)
+function AddElement(DOMElement, value, color, animationTime)
 {
     let div = document.createElement('div');
-    div.className = "element addElement";
+    div.className = "element";
+    div.animate(
+        [   {width: "0px", height: "0px", lineHeight: "0px", fontSize: "0px"},
+            {width: "100px", height: "50px", lineHeight: "50px", fontSize: "20px"}],
+        {duration: animationTime});
     div.innerText = value;
     div.style.borderColor = colors[color][0];
     div.style.backgroundColor = colors[color][1];
     div.style.color = colors[color][2];
     document.getElementById(DOMElement).appendChild(div);
-    //setTimeout(SetStandart, 1800, div);
 }
 
-function MarkDeleteElement(DOMElement)
+function MarkDeleteElement(DOMElement, animationTime)
 {
-    document.getElementById(DOMElement).lastChild.className = "element deleteElement";
+    let div = document.getElementById(DOMElement).lastChild;
+    div.animate(
+        [   {width: "100px", height: "50px", lineHeight: "50px", fontSize: "20px"},
+            {width: "0px", height: "0px", lineHeight: "0px", fontSize: "0px"}],
+        {duration: animationTime});
 }
 
 function RemoveElement(time, DOMElement) {
-    TimeoutId = setTimeout(MarkDeleteElement, time - 10, DOMElement);
-    TimeoutId = setTimeout(DeleteElement, time + Timer.animation - 20, DOMElement);
+    time = (time < 0 ? 0 : time);
+    TimeoutId = setTimeout(MarkDeleteElement, time, DOMElement, Timer.animation);
+    TimeoutId = setTimeout(DeleteElement, time - 20 + Timer.animation, DOMElement);
 }
 
 function DeleteElement(DOMElement)
@@ -336,15 +358,10 @@ function DeleteElement(DOMElement)
     document.getElementById(DOMElement).removeChild(document.getElementById(DOMElement).lastChild);
 }
 
-function SetStandart(element)
-{
-    element.className = "element";
-}
-
 function SetTime()
 {
     let time = Number(timeInput.value);
-    if (time >= 50) {
+    if (time >= 0) {
         Timer.animationTime = time;
     }
 }
@@ -381,7 +398,9 @@ function ReadFile(inputElement)
     {
         alert("Access denied!");
     }
+    inputElement.value = "";
 }
+
 function DoActions(actionsString) {
     let actions = actionsString.split(/[\r\n]/);
     for (let index = 0; index < actions.length; index++) {
@@ -393,11 +412,17 @@ function DoActions(actionsString) {
         else if (parts[0] == "pop") {
             Pop();
         }
-        else if(parts[0] == "time" && Number(parts[1]) >= 50)
+        else if(parts[0] == "time" && Number(parts[1]) >= 0)
         {
             Timer.animationTime = Number(parts[1]);
         }
     }
+}
+
+function SetDelayedAnimationTime(animationTime)
+{
+    Timer.datetime -= Timer.animation;
+    TimeoutId = setTimeout(function(){Timer.animationTime = animationTime}, Timer.time);
 }
 
 function SetNotify(text) {
@@ -406,12 +431,12 @@ function SetNotify(text) {
 
 function ReservePush(time, element) {
     let text = "Режим перекопіювання.</br>Елемент додано до резервного лівого стеку.";
-    TimeoutId = setTimeout(AddElement, time, "LeftReserve", element.value, element.color);
+    TimeoutId = setTimeout(AddElement, time, "LeftReserve", element.value, element.color, Timer.animation);
     TimeoutId = setTimeout(SetNotify, time, text);
 }
 
 function NormalPush(time, element, cleaned) {
-    TimeoutId = setTimeout(AddElement, time, "Left", element.value, element.color);
+    TimeoutId = setTimeout(AddElement, time, "Left", element.value, element.color, Timer.animation);
     let text = "Звичайний режим.</br>Елементи додаються до лівого стеку.";
     if (cleaned) {
         RemoveElement(time, "RightCopyReserve");
@@ -447,23 +472,23 @@ function NormalPop(time, cleaned) {
 }
 
 function RightToMediate(time, element) {
-    TimeoutId = setTimeout(AddElement, time, "Mediate", element.value, element.color);
+    TimeoutId = setTimeout(AddElement, time, "Mediate", element.value, element.color, Timer.animation);
     RemoveElement(time, "Right");
     let text = GetRecopyText(0);
     TimeoutId = setTimeout(SetNotify, time, text);
 }
 
 function LeftToRight(time, element) {
-    TimeoutId = setTimeout(AddElement, time, "Right", element.value, element.color);
-    TimeoutId = setTimeout(AddElement, time, "RightCopyReserve", element.value, element.color);
-    RemoveElement(time - 20, "Left");
+    TimeoutId = setTimeout(AddElement, time, "Right", element.value, element.color, Timer.animation);
+    TimeoutId = setTimeout(AddElement, time, "RightCopyReserve", element.value, element.color, Timer.animation);
+    RemoveElement(time, "Left");
     let text = GetRecopyText(1);
     TimeoutId = setTimeout(SetNotify, time, text);
 }
 
 function MediateToRight(time, element) {
-    TimeoutId = setTimeout(AddElement, time, "Right", element.value, element.color);
-    TimeoutId = setTimeout(AddElement, time, "RightCopyReserve", element.value, element.color);
+    TimeoutId = setTimeout(AddElement, time, "Right", element.value, element.color, Timer.animation);
+    TimeoutId = setTimeout(AddElement, time, "RightCopyReserve", element.value, element.color, Timer.animation);
     RemoveElement(time, "Mediate");
     let text = GetRecopyText(2);
     TimeoutId = setTimeout(SetNotify, time, text);
@@ -505,9 +530,6 @@ function ChangeAnimating()
     else {
         Timer.datetime = Date.now();
         Timer.animationTime = 0;
-        for (let index = 0; index <= TimeoutId; index++) {
-            clearTimeout(index);
-        }
         VisualQueue(queueIndex);
         PrintVersion(queueIndex, "Миттєве закінчення анімації", 0);
     }
@@ -520,10 +542,10 @@ function ChangePushIncrement()
 
 function GetRecopyText(stageId) {
     return "<p>Режим перекопіювання. Здійснення перекопіювання:</p>"
-        + "<p class=\"" + (stageId < 0 ? "stageUndone\">" : (stageId == 0 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "З правого до посереднього</p>"
-        + "<p class=\"" + (stageId < 1 ? "stageUndone\">" : (stageId == 1 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "З лівого до правого та резервного правого</p>"
-        + "<p class=\"" + (stageId < 2 ? "stageUndone\">" : (stageId == 2 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "З посереднього до правого та резервного правого</p>"
-        + "<p class=\"" + (stageId < 3 ? "stageUndone\">" : (stageId == 3 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "Очищення посереднього від взятих елементів</p>"
-        + "<p class=\"" + (stageId < 4 ? "stageUndone\">" : (stageId == 4 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "Обмін лівого з лівим резервним</p>"
-        + "<p class=\"" + (stageId < 5 ? "stageUndone\">" : (stageId == 5 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "Обмін копії правого з правим резервним</p>";
+        + "<p class=\"" + (stageId < 0 ? "stageUndone\">" : (stageId == 0 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "З правого стеку до посереднього</p>"
+        + "<p class=\"" + (stageId < 1 ? "stageUndone\">" : (stageId == 1 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "З лівого стеку до правого та резервного правого</p>"
+        + "<p class=\"" + (stageId < 2 ? "stageUndone\">" : (stageId == 2 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "З посереднього стеку до правого та резервного правого</p>"
+        + "<p class=\"" + (stageId < 3 ? "stageUndone\">" : (stageId == 3 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "Очищення посереднього стеку від взятих елементів</p>"
+        + "<p class=\"" + (stageId < 4 ? "stageUndone\">" : (stageId == 4 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "Обмін лівого стеку з лівим резервним</p>"
+        + "<p class=\"" + (stageId < 5 ? "stageUndone\">" : (stageId == 5 ? "stageInProgress\">► " : "stageComplete\">✓ ")) + "Обмін копії правого стеку з правим резервним</p>";
 }

@@ -65,14 +65,15 @@
         <div class="menuItem">
             <button onclick="Push()" style="background-color: #4fcf4f; color: green; border: 4px solid green;">◄Push</button>
             <div class="menuElement">
-                <input type="number" id="pushInput" value="1">
+                <input type="number" id="pushInput" value="1" onchange="VerifyPushing()" oninput="VerifyPushing()">
             </div>
-            <input type="checkbox" id="pushIncrement" onchange="ChangePushIncrement()" style="width: 20px;" checked="true">++
+            <input type="checkbox" id="pushIncrement" name="pushIncrement" onchange="ChangePushIncrement()" style="width: 20px;vertical-align: -webkit-baseline-middle;height: 20px;" checked="true">
+            <label for="pushIncrement" style="vertical-align: -webkit-baseline-middle;">++</label>
         </div>
         <div class="menuItem">
             <button onclick="Pop()" style="background-color: #cf4f4f; color: #7f0000; border: 4px solid #7f0000;">Pop►</button>
             <div class="menuElement">
-                <input type="number" id="popOutput">
+                <input type="number" id="popOutput" readonly>
             </div>
         </div>
         <div class="menuItem">
@@ -81,11 +82,12 @@
         </div>
         <h3>Управління анімацією</h3>
         <div class="menuItem">
-            <input type="checkbox" id="isAnimatingInput" style="margin-right: -30px" checked="true" onchange="ChangeAnimating()">Анімація
+            <input type="checkbox" id="isAnimatingInput" name="isAnimatingInput" style="width: 20px;vertical-align: -webkit-baseline-middle;height: 20px;" checked="true" onchange="ChangeAnimating()">
+            <label for="isAnimatingInput" style="vertical-align: -webkit-baseline-middle;">Анімація</label>
         </div>
         <div class="menuItem">
             Затримка: 
-            <input type="number" id="timeInput" value="1000" min="50" oninput="SetTime()"><p> мс</p>
+            <input type="number" id="timeInput" style="width: 100px" value="1000" min="50" oninput="SetTime()"><p> мс </p>
             <button>Задати</button>
         </div>
         <h3>Лог (історія версій)</h3>
