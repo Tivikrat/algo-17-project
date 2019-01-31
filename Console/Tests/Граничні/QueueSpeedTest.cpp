@@ -205,12 +205,10 @@ int main() {
             if (generator() < max || queue.size == 0)
             {
                 queue.Push(0);
-                nominator++;
             }
             else
             {
                 queue.Pop();
-                denominator++;
             }
         }
         std::cout << "1 million operations time: " << clock() - start << " ms\n";
