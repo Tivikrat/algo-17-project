@@ -194,6 +194,8 @@ int main() {
 
     Queue<std::string> queue = Queue<std::string>();
 
+    std::cout << "To push 42 (or other STRING value), print:\npush 42\n\tOR\n+ 42\n\nTo pop, print:\npop\n\tOR\n-\n\nTo exit, print:\nexit\n\nIt is time to act!\n";
+
     std::string str;
     std::cin >> str;
 
@@ -201,7 +203,9 @@ int main() {
     {
         if (str == "push" || str == "+")
         {
-            queue.Push(Input());
+            str = Input();
+            queue.Push(str);
+            std::cout << "Pushed " << str << '\n';
         }
         else if(str == "pop" || str == "-")
         {

@@ -183,8 +183,17 @@ int main() {
     std::ifstream _in;
     std::ofstream _out;
 
-    _in = std::ifstream("input.txt");
-    _out = std::ofstream("output.txt");
+    std::string inputFilename;
+    std::string outputFilename;
+
+    std::cout << "Input filename: ";
+    std::cin >> inputFilename;
+
+    std::cout << "Output filename: ";
+    std::cin >> outputFilename;
+
+    _in = std::ifstream(inputFilename);
+    _out = std::ofstream(outputFilename);
 
     Queue<std::string> queue = Queue<std::string>();
 
@@ -200,7 +209,7 @@ int main() {
         }
         else if (str == "pop" || str == "-")
         {
-            _out << (queue.size ? queue.Pop() : "Queue is empty. Nothing to pop.") << "\n";
+            _out << (queue.size ? queue.Pop() : "Queue is empty. Nothing to pop!") << "\n";
         }
     }
 

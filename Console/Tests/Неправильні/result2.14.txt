@@ -1,0 +1,72 @@
+Queue is empty. Nothing to pop!
+1
+Queue is empty. Nothing to pop!
+2
+Queue is empty. Nothing to pop!
+3
+Queue is empty. Nothing to pop!
+4
+5
+6
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+7
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+8
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+9
+10
+11
+12
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+13
+Queue is empty. Nothing to pop!
+14
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+15
+16
+Queue is empty. Nothing to pop!
+17
+18
+19
+20
+21
+Queue is empty. Nothing to pop!
+22
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+23
+Queue is empty. Nothing to pop!
+24
+25
+26
+27
+28
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!
+Queue is empty. Nothing to pop!

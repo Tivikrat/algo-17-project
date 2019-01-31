@@ -1,0 +1,500 @@
+push 1
+push 2
+pop
+pop
+push 3
+pop
+push 4
+push 5
+pop
+pop
+push 6
+pop
+push 7
+push 8
+pop
+pop
+push 9
+pop
+push 10
+pop
+push 11
+pop
+push 12
+pop
+push 13
+push 14
+pop
+pop
+push 15
+push 16
+push 17
+push 18
+pop
+push 19
+pop
+pop
+pop
+pop
+push 20
+pop
+push 21
+pop
+push 22
+pop
+push 23
+push 24
+pop
+pop
+push 25
+pop
+push 26
+pop
+push 27
+pop
+push 28
+pop
+push 29
+push 30
+push 31
+pop
+pop
+pop
+push 32
+pop
+push 33
+pop
+push 34
+push 35
+push 36
+pop
+pop
+pop
+push 37
+push 38
+pop
+pop
+push 39
+pop
+push 40
+pop
+push 41
+push 42
+pop
+push 43
+pop
+push 44
+pop
+push 45
+push 46
+pop
+pop
+pop
+push 47
+pop
+push 48
+pop
+push 49
+pop
+push 50
+pop
+push 51
+pop
+push 52
+push 53
+pop
+pop
+push 54
+pop
+push 55
+pop
+push 56
+pop
+push 57
+pop
+push 58
+pop
+push 59
+pop
+push 60
+push 61
+pop
+pop
+push 62
+pop
+push 63
+pop
+push 64
+pop
+push 65
+pop
+push 66
+pop
+push 67
+push 68
+push 69
+pop
+push 70
+push 71
+push 72
+pop
+pop
+pop
+push 73
+pop
+pop
+push 74
+push 75
+push 76
+pop
+push 77
+pop
+pop
+push 78
+pop
+push 79
+pop
+pop
+pop
+push 80
+pop
+push 81
+push 82
+pop
+pop
+push 83
+pop
+push 84
+pop
+push 85
+pop
+push 86
+pop
+push 87
+pop
+push 88
+pop
+push 89
+push 90
+pop
+pop
+push 91
+pop
+push 92
+pop
+push 93
+pop
+push 94
+pop
+push 95
+pop
+push 96
+push 97
+pop
+pop
+push 98
+pop
+push 99
+pop
+push 100
+pop
+push 101
+pop
+push 102
+pop
+push 103
+pop
+push 104
+pop
+push 105
+push 106
+pop
+pop
+push 107
+pop
+push 108
+pop
+push 109
+pop
+push 110
+pop
+push 111
+pop
+push 112
+pop
+push 113
+pop
+push 114
+pop
+push 115
+pop
+push 116
+pop
+push 117
+pop
+push 118
+pop
+push 119
+pop
+push 120
+pop
+push 121
+pop
+push 122
+pop
+push 123
+push 124
+pop
+pop
+push 125
+pop
+push 126
+pop
+push 127
+pop
+push 128
+pop
+push 129
+push 130
+pop
+pop
+push 131
+pop
+push 132
+push 133
+push 134
+pop
+push 135
+push 136
+push 137
+push 138
+push 139
+pop
+pop
+push 140
+pop
+pop
+pop
+push 141
+push 142
+pop
+pop
+pop
+pop
+pop
+push 143
+push 144
+pop
+push 145
+pop
+pop
+push 146
+pop
+push 147
+push 148
+push 149
+push 150
+push 151
+pop
+push 152
+pop
+pop
+pop
+push 153
+pop
+pop
+pop
+push 154
+push 155
+pop
+push 156
+pop
+pop
+push 157
+pop
+push 158
+pop
+push 159
+push 160
+push 161
+push 162
+pop
+pop
+pop
+push 163
+push 164
+push 165
+pop
+pop
+push 166
+push 167
+push 168
+pop
+pop
+pop
+pop
+pop
+push 169
+pop
+push 170
+pop
+push 171
+pop
+push 172
+push 173
+pop
+pop
+push 174
+pop
+push 175
+pop
+push 176
+pop
+push 177
+push 178
+pop
+push 179
+pop
+pop
+push 180
+pop
+push 181
+pop
+push 182
+push 183
+pop
+pop
+push 184
+pop
+push 185
+pop
+push 186
+pop
+push 187
+pop
+push 188
+pop
+push 189
+pop
+push 190
+pop
+push 191
+pop
+push 192
+pop
+push 193
+pop
+push 194
+pop
+push 195
+pop
+push 196
+push 197
+pop
+pop
+push 198
+pop
+push 199
+pop
+push 200
+pop
+push 201
+pop
+push 202
+push 203
+pop
+push 204
+pop
+pop
+push 205
+pop
+push 206
+push 207
+pop
+push 208
+pop
+pop
+push 209
+pop
+push 210
+pop
+push 211
+pop
+push 212
+push 213
+pop
+pop
+push 214
+push 215
+pop
+pop
+push 216
+pop
+push 217
+push 218
+push 219
+push 220
+push 221
+pop
+pop
+pop
+pop
+push 222
+pop
+pop
+push 223
+pop
+push 224
+pop
+push 225
+pop
+push 226
+pop
+push 227
+pop
+push 228
+pop
+push 229
+push 230
+pop
+push 231
+pop
+pop
+push 232
+push 233
+pop
+pop
+push 234
+push 235
+push 236
+pop
+push 237
+pop
+push 238
+pop
+pop
+pop
+push 239
+pop
+push 240
+push 241
+push 242
+pop
+push 243
+push 244
+pop
+pop
+push 245
+push 246
+pop
+push 247
+pop
+push 248
+pop
+pop
+pop
+push 249
+push 250
+pop
+pop
+push 251
